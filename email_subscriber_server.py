@@ -3,6 +3,8 @@ from dotenv import load_dotenv
 import os
 from flask import Flask, request
 load_dotenv()
+from flask_cors import CORS
+
 
 MONGO_USER = os.getenv("MONGO_DB_USER")
 MONGO_PASSWORD = os.getenv("MONGO_PWD")
@@ -13,6 +15,7 @@ db = client.Courses
 collection = db.RobloxCourseSubs
 
 server = Flask(__name__)
+CORS(server)
 
 def add_subscriber(email):
     try:
